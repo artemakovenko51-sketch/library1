@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Девятый вал — учебные материалы</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--ink:#10303F;--navy:#0B2533;--sea:#14394A;--teal:#2F6A73;--gold:#E8A94B;--sand:#F4EFE3;--mut:#35525F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:'Source Sans 3',sans-serif;min-height:100vh}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;margin:0}
+a{color:var(--sea);font-weight:600}
+button,input,select{font-family:inherit}
+header{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:20px clamp(16px,5vw,64px);flex-wrap:wrap;gap:12px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--sand);text-decoration:none;cursor:pointer}
+nav{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+nav a{color:var(--sand);text-decoration:none;font-size:17px;font-weight:400;cursor:pointer}
+nav a:hover{color:var(--gold)}
+.hero{background:linear-gradient(180deg,#14394A 0%,#2F6A73 45%,#E8A94B 100%);padding:clamp(40px,8vw,96px) clamp(16px,5vw,64px) 0;overflow:hidden}
+.hero h1{font-size:clamp(40px,7vw,76px);line-height:1;color:var(--sand);margin:16px 0 28px;max-width:720px}
+.kick{color:#F6D9A0;letter-spacing:2px;text-transform:uppercase;font-size:15px}
+.wave{display:block;width:calc(100% + 2*clamp(16px,5vw,64px));margin:40px calc(-1*clamp(16px,5vw,64px)) 0;height:100px}
+.sub{border-radius:0 0 40px 40px;background:linear-gradient(180deg,#14394A,#2F6A73);padding:48px clamp(16px,5vw,64px);color:var(--sand)}
+.sub h1{font-size:clamp(40px,6vw,64px);line-height:1;margin:12px 0 8px}
+.sub a{color:#F6D9A0;cursor:pointer}
+sec,section{display:block}
+.pad{padding:32px clamp(16px,5vw,64px) 8px}
+.pad h2{font-size:clamp(30px,4vw,40px);margin-bottom:20px}
+.pills{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pill{border-radius:999px;min-height:44px;padding:0 22px;border:1px solid var(--sea);background:transparent;color:var(--ink);font-size:17px;cursor:pointer}
+.pill.on{background:var(--sea);color:var(--sand)}
+.pill.add{border:1px dashed #A8691A;color:#8A5412}
+.btn{border-radius:999px;min-height:52px;padding:0 32px;border:0;background:var(--navy);color:var(--sand);font-size:18px;font-weight:600;cursor:pointer}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn:disabled{opacity:.6;cursor:wait}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.card{border-radius:20px;background:#fff;border-top:4px solid var(--teal);padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.img{border-top-color:#A8691A}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:12px;background:#eee}
+.tag{border-radius:999px;align-self:flex-start;background:var(--sea);color:var(--sand);font-size:13px;font-weight:600;padding:4px 10px}
+.img .tag{background:#8A5412;color:#fff}
+.card h3{font-size:26px;line-height:1.15;overflow-wrap:anywhere}
+.meta{color:var(--mut);font-size:15px}
+.row{border-radius:20px;background:#fff;border-left:4px solid var(--teal);padding:18px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+.row.img{border-left-color:#A8691A}
+.row .tag{min-width:52px;text-align:center}
+.row>div{flex:1 1 220px;min-width:0}
+.row h3{font-size:24px;overflow-wrap:anywhere}
+.x{background:none;border:0;color:#9a3b2a;cursor:pointer;font-size:14px;align-self:flex-start;padding:0;text-decoration:underline}
+.up{border-radius:32px;margin:40px clamp(16px,5vw,64px) 64px;background:var(--navy);color:var(--sand);padding:clamp(24px,5vw,48px);display:flex;gap:40px;flex-wrap:wrap}
+.up h2{color:var(--sand);font-size:clamp(30px,4vw,40px);margin-bottom:12px}
+.up p{margin:0;font-size:18px;line-height:1.5;color:#D8E3E3}
+.up .f{flex:1 1 320px;display:flex;flex-direction:column;gap:14px}
+.up label{font-size:15px;color:#F6D9A0}
+.up select,.up input[type=text]{border-radius:14px;min-height:48px;padding:0 12px;font-size:17px;border:0;width:100%}
+.up input[type=file]{border-radius:14px;padding:12px;border:1px dashed var(--gold);color:var(--sand);width:100%}
+.msg{font-size:15px;color:#F6D9A0;min-height:20px}
+.empty{color:var(--mut);font-size:18px;padding:16px 0}
+.gate{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:32px;text-align:center}
+.gate h1{font-size:48px;margin-bottom:12px}
+</style>
+</head>
+<body>
+<div id="app"><div class="gate"><div><h1>Девятый вал</h1><p class="meta">Загрузка…</p></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+/* ====== НАСТРОЙКИ: вставь свои данные из Supabase (Project Settings → API) ====== */
+const SUPABASE_URL = "https://znynfvypqnwuytgrvsfg.supabase.co";
+const SUPABASE_KEY = "sb_publishable_0eSj6dxeAgWWm0ZpZGex5Q_lnlFf26u";
+/* ================================================================================ */
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let sb,subjects=[],mats=[],filter='all',msg='',busy=false;
+const getName=()=>{try{return localStorage.getItem('nm')||''}catch(e){return ''}};
+const setName=v=>{try{localStorage.setItem('nm',v)}catch(e){}};
+
+function ago(t){
+  if(!t)return '';
+  const d=Math.floor((Date.now()-t)/864e5);
+  if(d<=0)return 'сегодня';
+  if(d===1)return 'вчера';
+  if(d<5)return d+' дн. назад';
+  if(d<7)return d+' дней назад';
+  if(d<14)return 'неделю назад';
+  if(d<30)return Math.floor(d/7)+' нед. назад';
+  return new Date(t).toLocaleDateString('ru-RU');
+}
+const view=()=>{const h=location.hash.slice(1);return h.startsWith('s-')?h.slice(2):null};
+const tagOf=m=>m.kind==='image'?'ФОТО':((m.file_name||'').split('.').pop()||'ФАЙЛ').toUpperCase().slice(0,5);
+
+function cardHtml(m,list){
+  const s=subjects.find(x=>x.id===m.subject_id);
+  const t=Date.parse(m.created_at);
+  const del=`<button class="x" data-del="${esc(m.id)}">Удалить</button>`;
+  const link=`<a href="${esc(m.url)}" target="_blank" rel="noopener">${m.kind==='image'?'Открыть':'Скачать / открыть'}</a>`;
+  if(list)return `<article class="row ${m.kind==='image'?'img':''}"><span class="tag">${esc(tagOf(m))}</span><div><h3>${esc(m.title)}</h3><div class="meta">${esc(m.author||'Друг')} · ${ago(t)}</div>${del}</div>${link}</article>`;
+  return `<article class="card ${m.kind==='image'?'img':''}">${m.kind==='image'?`<img src="${esc(m.url)}" alt="" loading="lazy">`:''}<span class="tag">${esc(tagOf(m))}</span><h3>${esc(m.title)}</h3><div class="meta">${esc(s?s.name:'—')}</div><div class="meta">${esc(m.author||'Друг')} · ${ago(t)}</div>${link}${del}</article>`;
+}
+
+function uploadHtml(sel){
+  const opts=subjects.map(s=>`<option value="${esc(s.id)}" ${s.id===sel?'selected':''}>${esc(s.name)}</option>`).join('');
+  return `<section class="up" id="upload"><div style="flex:1 1 280px"><h2>Поделиться материалом</h2><p>Выбери предмет, назови файл и загрузи его — друзья увидят его сразу. Картинки, PDF, Word, презентации и любые другие файлы (до 50 МБ).</p></div>
+  <div class="f">${subjects.length?`<label for="subj">Предмет</label><select id="subj">${opts}</select>
+  <label for="ttl">Название</label><input id="ttl" type="text" placeholder="Например, Билеты к экзамену">
+  <label for="nm">Твоё имя</label><input id="nm" type="text" placeholder="Чтобы друзья знали, кто загрузил" value="${esc(getName())}">
+  <label for="fl">Файл или картинка</label><input id="fl" type="file">
+  <button class="btn gold" id="send" ${busy?'disabled':''}>${busy?'Загружаю…':'Загрузить'}</button><div class="msg">${esc(msg)}</div>`
+  :`<p>Сначала добавь хотя бы один предмет на главной.</p>`}</div></section>`;
+}
+
+function header(){
+  return `<header><a class="logo" href="#">Девятый вал</a><nav><a href="#">Предметы</a><a data-go="materials">Материалы</a><a data-go="upload">Загрузить</a></nav></header>`;
+}
+
+function render(){
+  const sid=view(),app=$('#app');
+  const keep={s:$('#subj')?.value,t:$('#ttl')?.value,n:$('#nm')?.value};
+  if(sid){
+    const s=subjects.find(x=>x.id===sid);
+    if(!s){app.innerHTML=header()+`<div class="pad"><h2>Предмет не найден</h2><a href="#">← Все предметы</a></div>`;return}
+    const all=mats.filter(m=>m.subject_id===sid);
+    let list=all;
+    if(filter==='file')list=list.filter(m=>m.kind!=='image');
+    if(filter==='image')list=list.filter(m=>m.kind==='image');
+    app.innerHTML=header()+`<section class="sub"><a href="#">← Все предметы</a><h1>${esc(s.name)}</h1><p style="margin:0;font-size:19px;color:#D8E3E3">${all.length} материалов${all[0]?' · последний добавлен '+ago(Date.parse(all[0].created_at)):''}</p></section>
+    <section class="pad" id="materials"><div class="pills" style="margin-bottom:20px">
+    ${[['all','Все'],['file','Файлы'],['image','Картинки']].map(([k,l])=>`<button class="pill ${filter===k?'on':''}" data-f="${k}">${l}</button>`).join('')}
+    <button class="pill add" data-delsub="${esc(sid)}">Удалить предмет</button>
+    <button class="btn gold" style="margin-left:auto;min-height:44px;padding:0 24px;font-size:17px" data-go="upload">+ Добавить в «${esc(s.name)}»</button></div>
+    ${list.length?list.map(m=>cardHtml(m,true)).join(''):'<div class="empty">Здесь пока пусто.</div>'}</section>`+uploadHtml(sid);
+  }else{
+    const list=filter==='all'||!subjects.some(s=>s.id===filter)?mats:mats.filter(m=>m.subject_id===filter);
+    app.innerHTML=header()+`<section class="hero"><div style="max-width:720px"><div class="kick">Учебные материалы</div><h1>Материалы и всякая хуйня шобы пережить третий курс</h1><button class="btn" data-go="upload">Добавить материал</button></div>
+    <svg viewBox="0 0 1280 120" preserveAspectRatio="none" aria-hidden="true" class="wave"><path d="M0 60 C160 0 320 120 480 60 C640 0 800 120 960 60 C1120 0 1200 90 1280 50 L1280 120 L0 120Z" fill="#F4EFE3"/></svg></section>
+    <section class="pad" id="subjects"><h2>Предметы</h2><div class="pills">
+    <button class="pill ${filter==='all'?'on':''}" data-f="all">Все</button>
+    ${subjects.map(s=>`<button class="pill ${filter===s.id?'on':''}" data-f="${esc(s.id)}">${esc(s.name)}</button>`).join('')}
+    <button class="pill add" id="newsub">+ Новый предмет</button></div>
+    ${filter!=='all'&&subjects.some(s=>s.id===filter)?`<p style="margin:16px 0 0"><a href="#s-${esc(filter)}">Открыть страницу предмета →</a></p>`:''}</section>
+    <section class="pad" id="materials" style="padding-top:40px"><h2>Последние материалы</h2>
+    ${list.length?`<div class="grid">${list.slice(0,40).map(m=>cardHtml(m,false)).join('')}</div>`:'<div class="empty">Пока ничего не загружено.</div>'}</section>`+uploadHtml(filter!=='all'?filter:undefined);
+  }
+  if(keep.s&&$('#subj'))$('#subj').value=keep.s;
+  if(keep.t&&$('#ttl'))$('#ttl').value=keep.t;
+  if(keep.n&&$('#nm'))$('#nm').value=keep.n;
+}
+
+async function load(){
+  const [a,b]=await Promise.all([
+    sb.from('subjects').select('*').order('created_at',{ascending:true}),
+    sb.from('materials').select('*').order('created_at',{ascending:false})
+  ]);
+  if(a.error||b.error){
+    $('#app').innerHTML=`<div class="gate"><div><h1>Ошибка</h1><p class="meta" style="max-width:420px">Не удалось подключиться к базе. Проверь адрес и ключ в index.html и что выполнен setup.sql.<br>${esc((a.error||b.error).message)}</p></div></div>`;
+    return false;
+  }
+  subjects=a.data;mats=b.data;render();return true;
+}
+
+document.addEventListener('click',async e=>{
+  const t=e.target.closest('[data-f],[data-go],[data-del],[data-delsub],#newsub,#send');
+  if(!t)return;
+  if(t.dataset.f){filter=t.dataset.f;render()}
+  else if(t.dataset.go){$('#'+t.dataset.go)?.scrollIntoView({behavior:'smooth'})}
+  else if(t.dataset.del){
+    if(!confirm('Удалить этот материал?'))return;
+    const m=mats.find(x=>x.id===t.dataset.del);
+    const r=await sb.from('materials').delete().eq('id',t.dataset.del);
+    if(r.error)return alert('Не удалось удалить');
+    if(m&&m.path)await sb.storage.from('materials').remove([m.path]);
+    load();
+  }else if(t.dataset.delsub){
+    if(!confirm('Удалить предмет вместе со всеми его материалами?'))return;
+    const paths=mats.filter(m=>m.subject_id===t.dataset.delsub&&m.path).map(m=>m.path);
+    const r=await sb.from('subjects').delete().eq('id',t.dataset.delsub);
+    if(r.error)return alert('Не удалось удалить');
+    if(paths.length)await sb.storage.from('materials').remove(paths);
+    location.hash='';load();
+  }else if(t.id==='newsub'){
+    const name=(prompt('Название предмета:')||'').trim();
+    if(!name)return;
+    const r=await sb.from('subjects').insert({name});
+    if(r.error)alert('Не удалось добавить');
+    load();
+  }else if(t.id==='send'){
+    const sid=$('#subj').value,title=$('#ttl').value.trim(),nm=$('#nm').value.trim(),f=$('#fl').files[0];
+    if(!f){msg='Выбери файл.';render();return}
+    setName(nm);busy=true;msg='';render();
+    try{
+      const ext=((f.name.match(/\.[A-Za-z0-9]{1,8}$/)||[''])[0]).toLowerCase();
+      const path=crypto.randomUUID()+ext;
+      const up=await sb.storage.from('materials').upload(path,f,{contentType:f.type||undefined});
+      if(up.error)throw up.error;
+      const url=sb.storage.from('materials').getPublicUrl(path).data.publicUrl;
+      const ins=await sb.from('materials').insert({
+        title:title||f.name.replace(/\.[^.]+$/,''),subject_id:sid,url,path,
+        kind:(f.type||'').startsWith('image/')?'image':'file',file_name:f.name,author:nm||'Друг'});
+      if(ins.error)throw ins.error;
+      msg='Готово — материал добавлен!';
+      await load();
+    }catch(err){msg='Не получилось загрузить: '+(err&&err.message?err.message:'проверь размер файла (до 50 МБ).')}
+    busy=false;render();
+  }
+});
+window.addEventListener('hashchange',()=>{filter='all';render();scrollTo(0,0)});
+window.addEventListener('focus',()=>{if(sb&&!busy)load()});
+
+(async()=>{
+  if(SUPABASE_URL.includes('ТВОЙ')){
+    $('#app').innerHTML=`<div class="gate"><div><h1>Почти готово</h1><p class="meta" style="max-width:420px">Открой index.html и вставь адрес проекта и ключ Supabase в начале скрипта.</p></div></div>`;
+    return;
+  }
+  sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  await load();
+})();
+</script>
+</body>
+</html>
